@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  application:
+  name: gateway-microservice
+  cloud:
+    gateway:
+      routes:
+        - id: user-microservice
+          uri: ${USER_MICROSERVICE_URI}
+          predicates:
+            - Path=/api/users/**
+jwt:
+  secret:
+    key: ${JWT_SECRET}
+  expiration:
+    time: ${JWT_EXPIRATION}
